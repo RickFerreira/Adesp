@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Materiais</title>
+</head>
+<body>
+<h1>Materiais</h1>
+<ul>
+    <li th:each="material : ${materiais}">
+        <a th:href="@{/materiais/{id}(id=${material.id})}" th:text="${material.nome}"></a>
+    </li>
+</ul>
+<a href="/materiais/add">Adicionar Material</a>
+</body>
+</html>

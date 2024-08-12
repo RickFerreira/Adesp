@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalhes do Material</title>
+</head>
+<body>
+<h1 th:text="${material.nome}"></h1>
+<p>Descrição: <span th:text="${material.descricao}"></span></p>
+<p>Dica: <span th:text="${material.dica}"></span></p>
+<p>Tipo: <span th:text="${material.tipo}"></span></p>
+<p>URL: <a th:href="${material.url}" th:text="${material.url}"></a></p>
+<form th:action="@{/materiais/delete}" method="post">
+    <input type="hidden" name="id" th:value="${material.id}"/>
+    <button type="submit">Excluir</button>
+</form>
+<a href="/materiais">Voltar para lista</a>
+</body>
+</html>

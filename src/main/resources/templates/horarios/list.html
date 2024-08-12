@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Horários</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Lista de Horários</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Dia</th>
+        <th>Hora</th>
+        <th>Professor</th>
+        <th>Sala</th>
+        <th>Laboratório</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterar sobre os horários e exibi-los -->
+    <tr th:each="horario : ${horarios}">
+        <td th:text="${horario.id}"></td>
+        <td th:text="${horario.dia}"></td>
+        <td th:text="${horario.hora}"></td>
+        <td th:text="${horario.professorId}"></td>
+        <td th:text="${horario.sala}"></td>
+        <td th:text="${horario.laboratorio}"></td>
+        <td>
+            <a th:href="@{/horarios/{id}(id=${horario.id})}">Detalhes</a>
+            <form th:action="@{/horarios/delete}" method="post">
+                <input type="hidden" name="id" th:value="${horario.id}"/>
+                <button type="submit">Excluir</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/horarios/add">Adicionar Horário</a>
+</body>
+</html>
